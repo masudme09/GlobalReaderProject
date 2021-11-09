@@ -15,8 +15,10 @@ config :global_reader_project, GlobalReaderProject.Repo,
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :global_reader_project, GlobalReaderProjectWeb.Endpoint,
-  http: [port: 4002],
-  server: false
+  http: [ip: {127, 0, 0, 1}, port: 4001],
+  server: true
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+config :hound, driver: "chrome_driver"
+config :takso, sql_sandbox: true

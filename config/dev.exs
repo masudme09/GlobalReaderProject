@@ -4,7 +4,7 @@ use Mix.Config
 config :global_reader_project, GlobalReaderProject.Repo,
   username: "postgres",
   password: "postgres",
-  database: "global_reader_project_dev",
+  database: "global_reader_project_devmod",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
