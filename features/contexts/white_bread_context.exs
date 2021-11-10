@@ -17,7 +17,7 @@ defmodule WhiteBreadContext do
   end
 
 
-  given_ ~r/^the following users are on the system$/, fn state,  %{table_data: table} ->
+  given_ ~r/^the following user are on the system$/, fn state,  %{table_data: table} ->
     table
     |> Enum.map(fn user -> User.changeset(%User{}, user) end)
     |> Enum.each(fn changeset -> Repo.insert!(changeset) end)

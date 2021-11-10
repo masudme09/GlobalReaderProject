@@ -21,7 +21,7 @@ defmodule GlobalReaderProject.MixProject do
   def application do
     [
       mod: {GlobalReaderProject.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :bamboo]
     ]
   end
 
@@ -47,7 +47,9 @@ defmodule GlobalReaderProject.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.5"},
       {:white_bread, "~> 4.5", only: [:test]},
-      {:hound, "~> 1.0"}
+      {:hound, "~> 1.0"},
+      {:bamboo, "~> 0.8"},
+      {:secure_random, "~> 0.5"}
     ]
   end
 

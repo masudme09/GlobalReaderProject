@@ -7,6 +7,8 @@ defmodule GlobalReaderProject.Accounts.User do
     field :name, :string
     field :password, :string
     field :username, :string
+    field :password_reset_token, :string
+    field :password_reset_sent_at, :naive_datetime
 
     timestamps()
   end
@@ -14,7 +16,12 @@ defmodule GlobalReaderProject.Accounts.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :username, :email, :password])
+    |> cast(attrs, [:name, :username, :email, :password, :password_reset_token, :password_reset_sent_at ])
     |> validate_required([:name, :username, :email, :password])
+  end
+
+  def changeset_update(user, attrs) do
+    user
+    |> cast(attrs, [])
   end
 end

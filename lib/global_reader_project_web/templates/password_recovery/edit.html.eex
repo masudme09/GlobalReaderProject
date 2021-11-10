@@ -1,0 +1,14 @@
+<%= form_for @changeset, Routes.password_recovery_path(@conn, :update, @user.password_reset_token), fn f -> %>
+    <%= label f, :password, "New password" %>
+    <%= password_input f, :password, required: true %>
+    <%= error_tag f, :password %>
+
+    <%= label f, :password_confirmation, "New password confirmation" %>
+    <%= password_input f, :password_confirmation, required: true %>
+    <%= error_tag f, :password_confirmation %>
+
+    <div>
+        <%= submit "Save" %>
+    </div>
+
+<% end %>

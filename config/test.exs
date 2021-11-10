@@ -21,4 +21,4 @@ config :global_reader_project, GlobalReaderProjectWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 config :hound, driver: "chrome_driver"
-config :takso, sql_sandbox: true
+config :global_reader_project, sql_sandbox: true

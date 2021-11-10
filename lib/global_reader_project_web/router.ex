@@ -13,12 +13,17 @@ defmodule GlobalReaderProjectWeb.Router do
     plug :accepts, ["json"]
   end
 
+  if Mix.env == :dev do
+    forward "/sent_emails", Bamboo.EmailPreviewPlug
+  end
+
   scope "/", GlobalReaderProjectWeb do
     pipe_through :browser
 
     get "/", PageController, :index
     resources "/users", UserController
-    resources "/sessions", SessionController, only: [:new, :create]
+    resources "/login", LoginController, only: [:index, :create]
+    resources "/forgotpassword", PasswordRecoveryController, [:new, :create, :edit, :update]
   end
 
   # Other scopes may use custom stacks.

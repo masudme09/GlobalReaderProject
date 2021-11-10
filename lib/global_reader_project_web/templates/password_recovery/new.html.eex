@@ -1,0 +1,13 @@
+<h1>Password Recovery</h1>
+<p>We'll send instructions by email.</p>
+<%= form_for @conn, Routes.password_recovery_path(@conn, :create),
+     fn email -> %>
+<%= text_input email, :email,
+    placeholder: "email",
+    required: true %>
+<%= error_tag email, :email %>
+
+<div>
+    <%= submit "Reset Password" %>
+</div>
+<% end %>
