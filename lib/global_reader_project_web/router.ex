@@ -22,6 +22,7 @@ defmodule GlobalReaderProjectWeb.Router do
 
     get "/", PageController, :index
     resources "/users", UserController
+    get "/users/:id/info", UserController, :get_user_info
     resources "/login", LoginController, only: [:index, :create]
     resources "/forgotpassword", PasswordRecoveryController, [:new, :create, :edit, :update]
   end

@@ -27,7 +27,7 @@ defmodule GlobalReaderProject.Queries do
 
   def change_user(user) do
     user
-    |>User.changeset_update(user)
+    |>User.changeset_update(%{})
   end
 
   def valid_token?(token_sent_at) do

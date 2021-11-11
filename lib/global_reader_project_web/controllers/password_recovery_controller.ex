@@ -9,7 +9,7 @@ defmodule GlobalReaderProjectWeb.PasswordRecoveryController do
     case Queries.get_user_from_email(email) do
       nil ->
         conn
-        |> put_flash(:info, "Email not found")
+        |> put_flash(:error, "Email not found")
         |> redirect(to: Routes.password_recovery_path(conn, :new))
       user ->
         user
@@ -26,7 +26,7 @@ defmodule GlobalReaderProjectWeb.PasswordRecoveryController do
   def edit(conn, %{"id" => token}) do
     if user = Queries.get_user_from_token(token) do
       changeset = Queries.change_user(user)
-      render(conn, "edit.html", user: user, changeset: changeset)
+      render(conn, "edit.html", changeset: changeset, user: user)
     else
       render(conn, "invalid_token.html")
     end

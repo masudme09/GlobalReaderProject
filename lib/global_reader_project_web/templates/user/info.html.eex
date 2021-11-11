@@ -1,0 +1,20 @@
+<h2>User Details</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Job Count</th>
+      <th>Device Count</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= for d <- @data do %>
+    <tr>
+      <td><%= d.name %> </td>
+      <td><%= d.jobs_count  %> </td>
+      <td><%= d.devices_count %> </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
