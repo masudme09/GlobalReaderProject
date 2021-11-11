@@ -11,9 +11,17 @@
   <article class="column">
     <div class="row" >
       <button class="button" style="margin-right: 5px;"
-       onclick="location.href='<%= Routes.login_path(@conn, :index) %>';" 
+       onclick="location.href='<%= Routes.login_path(@conn, :index) %>';"
        >Login</button>
-      <button class="button">Join Us</button>
+
+        <!--Static email path is used to demonstrate only-->
+       <button class="button" style="margin-right: 5px;"
+       onclick="location.href='http://localhost:4000/sent_emails';"
+       >Emails</button>
+
+        <button class="button" style="margin-right: 5px;"
+       onclick="location.href='<%= Routes.user_path(@conn, :get_user_info) %>';"
+       >User Summary</button>
     </div>
   </article>
 

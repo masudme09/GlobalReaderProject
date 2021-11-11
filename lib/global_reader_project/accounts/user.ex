@@ -27,6 +27,7 @@ defmodule GlobalReaderProject.Accounts.User do
 
   def changeset_update(user, attrs) do
     user
-    |> cast(attrs, [])
+    |> cast(attrs, [:password])
+    |> validate_confirmation(:password)
   end
 end

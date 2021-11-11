@@ -14,9 +14,10 @@ defmodule GlobalReaderProject.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: GlobalReaderProject.PubSub},
       # Start the Endpoint (http/https)
-      GlobalReaderProjectWeb.Endpoint
+      GlobalReaderProjectWeb.Endpoint,
       # Start a worker by calling: GlobalReaderProject.Worker.start_link(arg)
       # {GlobalReaderProject.Worker, arg}
+      GlobalReaderProject.UrlMonitor
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

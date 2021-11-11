@@ -8,7 +8,7 @@ defmodule GlobalReaderProject.Email do
     |> subject("Password Reset Request")
     |> put_html_layout({GlobalReaderProjectWeb.LayoutView, "email.html"})
     |> assign(:user, user)
-    |> render("password_reset.html")
+    |> render("password_reset.html" , email: user.email)
   end
 
 end

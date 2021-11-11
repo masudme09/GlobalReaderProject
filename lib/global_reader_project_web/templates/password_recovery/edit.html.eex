@@ -8,7 +8,7 @@
     <%= error_tag f, :password_confirmation %>
 
     <div>
-        <%= submit "Save" %>
+        <%= submit "Reset Password" %>
     </div>
 
 <% end %>

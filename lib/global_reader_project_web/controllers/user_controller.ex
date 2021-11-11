@@ -11,8 +11,8 @@ defmodule GlobalReaderProjectWeb.UserController do
   end
 
   def show(conn, %{"id" => email}) do
-    users = Queries.get_user_from_email(email)
-    render(conn, "index.html", users: users)
+    user = Queries.get_user_from_email(email)
+    render(conn, "show.html", user: user)
   end
 
   def get_user_info(conn, _params) do
@@ -21,10 +21,10 @@ defmodule GlobalReaderProjectWeb.UserController do
             join: d in Device, on: d.user_id == u.id, distinct: true,
             join: j in Job, on: j.user_id == u.id,
             group_by: u.id,
-            select: %{id: u.id, name: u.name, email: u.email, username: u.username, devices_count: count(fragment("DISTINCT ?", d.id)), jobs_count: count(fragment("DISTINCT ?", j.id))}
+            select: %{id: u.id, name: u.name, email: u.email, username: u.username,
+            devices_count: count(fragment("DISTINCT ?", d.id)), jobs_count: count(fragment("DISTINCT ?", j.id))}
 
     data = query |> Repo.all() |> Enum.map(fn(user) -> struct(User, user) end)
-
     Logger.info("ResultTest : #{inspect(data)}")
 
     render( conn, "info.html", data: data )

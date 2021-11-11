@@ -49,9 +49,11 @@ defmodule GlobalReaderProject.MixProject do
       {:white_bread, "~> 4.5", only: [:test]},
       {:hound, "~> 1.0"},
       {:bamboo, "~> 0.8"},
-      {:secure_random, "~> 0.5"}
+      {:secure_random, "~> 0.5"},
+      {:httpoison, "~> 1.0"}
     ]
   end
+
 
   # Aliases are shortcuts or tasks specific to the current project.
   # For example, to install project dependencies and perform other setup tasks, run:

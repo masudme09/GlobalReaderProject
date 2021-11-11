@@ -21,8 +21,8 @@ defmodule GlobalReaderProjectWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/users", UserController
-    get "/users/:id/info", UserController, :get_user_info
+    resources "/users", UserController, [:index, :show]
+    get "/users/summary/info", UserController, :get_user_info
     resources "/login", LoginController, only: [:index, :create]
     resources "/forgotpassword", PasswordRecoveryController, [:new, :create, :edit, :update]
   end
