@@ -15,7 +15,7 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ![HomePage](images/homepage.png)
 
-Login Page: By clicking on Login button at home page routes to login page. User authetication and login function is not implemented. Also password is saved to database as plain text.
+<b> Login Page: </b> By clicking on Login button at home page routes to login page. User authetication and login function is not implemented. Also password is saved to database as plain text.
 
 ![Login Page](images/loginpage.png)
 
@@ -40,11 +40,11 @@ Entering and confirming updated password will routes to user details view where 
 ![updated_pass_view](images/updated_pass_view.png)
 
 
-User Device and Jobs Count: To check users with jobs and device count information, go to homepage and click on user summary button.
+<b> User Device and Jobs Count: </b> To check users with jobs and device count information, go to homepage and click on user summary button.
 
 ![user_summary_view](images/User_summary_view.png)
 
-Generating Log: Log to monitor endpoint is done with GensServer and module responsible for it is [log_monitor](lib/global_reader_project/urlmonitor.ex)
+<b> Generating Log: </b> Log to monitor endpoint is done with GensServer and module responsible for it is [log_monitor](lib/global_reader_project/urlmonitor.ex)
 
 By running the application with `mix phx.server` automatically starts to write log in console twice a minute. 
 
