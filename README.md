@@ -44,7 +44,7 @@ User Device and Jobs Count: To check users with jobs and device count informatio
 
 ![user_summary_view](images/User_summary_view.png)
 
-Generating Log: Log to monitor endpoint is done with GensServer and module responsible for it is ![log_monitor](lib/global_reader_project/urlmonitor.ex)
+Generating Log: Log to monitor endpoint is done with GensServer and module responsible for it is [log_monitor](lib/global_reader_project/urlmonitor.ex)
 
 By running the application with `mix phx.server` automatically starts to write log in console twice a minute. 
 
