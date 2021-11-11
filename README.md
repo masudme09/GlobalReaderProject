@@ -9,12 +9,72 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## Application Flow:
 
-## Learn more
+Homepage: 
+
+![HomePage](images/homepage.png)
+
+Login Page: By clicking on Login button at home page routes to login page. User authetication and login function is not implemented. Also password is saved to database as plain text.
+
+![Login Page](images/loginpage.png)
+
+By clicking on forget password link routes to password recovery page. 
+
+![Password Recovery Page](images/passwordrecovery.png)
+
+Some demo user is seeded to database for demonstration. ulha@testing.com is a valid email. By testing with this email, we can get following notification.
+
+![Password Recovery with email sent](images/passwordrecovery_with_emai_sent.png)
+
+Now to simulate email sending, Bamboo package is used. To check new email, go back to home page and click on email.
+
+![email_box](images/email_box.png)
+
+Now by clicking on change password link from email inbox, will open password change form.
+
+![password change form](images/password_restet_form.png)
+
+Entering and confirming updated password will routes to user details view where user with upadated password information can be seen. This is entirely for demonstration purpose. 
+
+![updated_pass_view](images/updated_pass_view.png)
+
+
+User Device and Jobs Count: To check users with jobs and device count information, go to homepage and click on user summary button.
+
+![user_summary_view](images/User_summary_view.png)
+
+Generating Log: Log to monitor endpoint is done with GensServer and module responsible for it is ![log_monitor](lib/global_reader_project/urlmonitor.ex)
+
+By running the application with `mix phx.server` automatically starts to write log in console twice a minute. 
+
+Ecto Query to Generate Device & Job Count association with user is done as like below: 
+
+```elixir
+
+def get_user_info(conn, _params) do
+
+    query = from u in User,
+            join: d in Device, on: d.user_id == u.id, distinct: true,
+            join: j in Job, on: j.user_id == u.id,
+            group_by: u.id,
+            select: %{id: u.id, name: u.name, email: u.email, username: u.username,
+            devices_count: count(fragment("DISTINCT ?", d.id)), jobs_count: count(fragment("DISTINCT ?", j.id))}
+
+    data = query |> Repo.all() |> Enum.map(fn(user) -> struct(User, user) end)
+    Logger.info("ResultTest : #{inspect(data)}")
+
+    render( conn, "info.html", data: data )
+end
+
+```
+
+
+
+## Acknowledgements
 
   * Official website: https://www.phoenixframework.org/
   * Guides: https://hexdocs.pm/phoenix/overview.html
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+  * ElixirCasts: https://elixircasts.io/
