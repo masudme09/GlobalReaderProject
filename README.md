@@ -52,20 +52,14 @@ Ecto Query to Generate Device & Job Count association with user is done as like 
 
 ```elixir
 
-def get_user_info(conn, _params) do
-
     query = from u in User,
-            join: d in Device, on: d.user_id == u.id, distinct: true,
+            join: d in Device, on: d.user_id == u.id,
             join: j in Job, on: j.user_id == u.id,
             group_by: u.id,
             select: %{id: u.id, name: u.name, email: u.email, username: u.username,
             devices_count: count(fragment("DISTINCT ?", d.id)), jobs_count: count(fragment("DISTINCT ?", j.id))}
 
     data = query |> Repo.all() |> Enum.map(fn(user) -> struct(User, user) end)
-    Logger.info("ResultTest : #{inspect(data)}")
-
-    render( conn, "info.html", data: data )
-end
 
 ```
 

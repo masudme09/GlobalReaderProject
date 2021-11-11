@@ -18,7 +18,7 @@ defmodule GlobalReaderProjectWeb.UserController do
   def get_user_info(conn, _params) do
 
     query = from u in User,
-            join: d in Device, on: d.user_id == u.id, distinct: true,
+            join: d in Device, on: d.user_id == u.id,
             join: j in Job, on: j.user_id == u.id,
             group_by: u.id,
             select: %{id: u.id, name: u.name, email: u.email, username: u.username,
